@@ -10,12 +10,16 @@ import OrderDetail from "./components/listers/OrderDetail"
 import PaymentManager from "./components/listers/PaymentCards"
 import PaymentDetail from "./components/listers/PaymentDetail"
 
+import MenuView from "./components/MenuView"
+import MenuViewDetail from "./components/MenuViewDetail"
 import FoodCookingManager from "./components/listers/FoodCookingCards"
 import FoodCookingDetail from "./components/listers/FoodCookingDetail"
 
 import DeliveryManager from "./components/listers/DeliveryCards"
 import DeliveryDetail from "./components/listers/DeliveryDetail"
 
+import CustomerInfoManager from "./components/listers/CustomerInfoCards"
+import CustomerInfoDetail from "./components/listers/CustomerInfoDetail"
 
 import MyPageView from "./components/MyPageView"
 import MyPageViewDetail from "./components/MyPageViewDetail"
@@ -46,6 +50,16 @@ export default new Router({
             },
 
             {
+                path: '/menus',
+                name: 'MenuView',
+                component: MenuView
+            },
+            {
+                path: '/menus/:id',
+                name: 'MenuViewDetail',
+                component: MenuViewDetail
+            },
+            {
                 path: '/foodCookings',
                 name: 'FoodCookingManager',
                 component: FoodCookingManager
@@ -67,6 +81,16 @@ export default new Router({
                 component: DeliveryDetail
             },
 
+            {
+                path: '/customerInfos',
+                name: 'CustomerInfoManager',
+                component: CustomerInfoManager
+            },
+            {
+                path: '/customerInfos/:id',
+                name: 'CustomerInfoDetail',
+                component: CustomerInfoDetail
+            },
 
             {
                 path: '/myPages',

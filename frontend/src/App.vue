@@ -61,6 +61,16 @@
                     </v-list-item>
 
 
+                    <v-list-item
+                        class="px-2"
+                        key="menus"
+                        to="menus"
+                        @click="changeUrl()"
+                        color="deep-purple lighten-2"
+                        style="font-weight:700;"
+                    >
+                        Menu
+                    </v-list-item>
 
                     <v-list-item
                         class="px-2"
@@ -86,6 +96,18 @@
                         Delivery
                     </v-list-item>
 
+
+
+                    <v-list-item
+                        class="px-2"
+                        key="customerInfos"
+                        to="/customerInfos"
+                        @click="changeUrl()"
+                        color="deep-purple lighten-2"
+                        style="font-weight:700;"
+                    >
+                        CustomerInfo
+                    </v-list-item>
 
 
                     <v-list-item
@@ -196,6 +218,35 @@
                             </v-list-item>
 
                             <v-card-actions>
+                                <v-btn 
+                                    class="mx-auto"
+                                    outlined
+                                    rounded
+                                    key="menus"
+                                    to="/menus"
+                                    @click="changeUrl()"
+                                    color="deep-purple lighten-2"
+                                    style="font-weight:500; font-size:20px; padding:15px;"
+                                >
+                                    Menu
+                                </v-btn>
+                            </v-card-actions>
+                        </v-card>
+                        <v-card
+                            class="mx-auto"
+                            style="height:300px; width:300px; margin-bottom:20px;"
+                            outlined
+                        >
+                            <v-list-item>
+                                <v-list-item-avatar 
+                                    class="mx-auto"
+                                    size="80"
+                                    style="margin-top:80px;"
+                                ><span class="mdi mdi-apps" style="font-size:60px; color:#9575CD;"></span>
+                                </v-list-item-avatar>
+                            </v-list-item>
+
+                            <v-card-actions>
                                 <v-tooltip bottom>
                                     <template v-slot:activator="{ on }">
                                         <v-btn 
@@ -253,6 +304,41 @@
                             </v-card-actions>
                         </v-card>
 
+                        <v-card
+                            class="mx-auto"
+                            style="height:300px; width:300px; margin-bottom:20px;"
+                            outlined
+                        >
+                            <v-list-item>
+                                <v-list-item-avatar 
+                                    class="mx-auto"
+                                    size="80"
+                                    style="margin-top:80px;"
+                                ><span class="mdi mdi-apps" style="font-size:60px; color:#9575CD;"></span>
+                                </v-list-item-avatar>
+                            </v-list-item>
+
+                            <v-card-actions>
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on }">
+                                        <v-btn 
+                                            v-on="on"
+                                            class="mx-auto"
+                                            outlined
+                                            rounded
+                                            key="customerInfos"
+                                            to="/customerInfos"
+                                            @click="changeUrl()"
+                                            color="deep-purple lighten-2"
+                                            style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
+                                        >
+                                            CustomerInfo
+                                        </v-btn>
+                                    </template>
+                                    <span>CustomerInfo</span>
+                                </v-tooltip>
+                            </v-card-actions>
+                        </v-card>
 
                         <v-card
                             class="mx-auto"

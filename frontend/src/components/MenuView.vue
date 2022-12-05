@@ -2,7 +2,7 @@
 
     <v-data-table
         :headers="headers"
-        :items="myPage"
+        :items="menu"
         :items-per-page="5"
         class="elevation-1"
     ></v-data-table>
@@ -13,7 +13,7 @@
     const axios = require('axios').default;
 
     export default {
-        name: 'MyPageView',
+        name: 'MenuView',
         props: {
             value: Object,
             editMode: Boolean,
@@ -22,17 +22,18 @@
         data: () => ({
             headers: [
                 { text: "id", value: "id" },
-                { text: "status", value: "status" },
-                { text: "point", value: "point" },
+                { text: "foodId", value: "foodId" },
+                { text: "storeId", value: "storeId" },
+                { text: "options", value: "options" },
             ],
-            myPage : [],
+            menu : [],
         }),
           async created() {
-            var temp = await axios.get(axios.fixUrl('/myPages'))
+            var temp = await axios.get(axios.fixUrl('/menus'))
 
-            temp.data._embedded.myPages.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            temp.data._embedded.menus.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
 
-            this.myPage = temp.data._embedded.myPages;
+            this.menu = temp.data._embedded.menus;
         },
         methods: {
         }

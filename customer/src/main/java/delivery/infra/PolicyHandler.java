@@ -17,6 +17,7 @@ import delivery.domain.*;
 @Service
 @Transactional
 public class PolicyHandler{
+    @Autowired CustomerInfoRepository customerInfoRepository;
     
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString){}
@@ -87,6 +88,37 @@ public class PolicyHandler{
         
 
         // Sample Logic //
+
+        
+
+    }
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='PointEarned'")
+    public void wheneverPointEarned_Notify(@Payload PointEarned pointEarned){
+
+        PointEarned event = pointEarned;
+        System.out.println("\n\n##### listener Notify : " + pointEarned + "\n\n");
+
+
+        
+
+        // Sample Logic //
+
+        
+
+    }
+
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='Delivered'")
+    public void wheneverDelivered_EarnDeliveryPoints(@Payload Delivered delivered){
+
+        Delivered event = delivered;
+        System.out.println("\n\n##### listener EarnDeliveryPoints : " + delivered + "\n\n");
+
+
+        
+
+        // Sample Logic //
+        CustomerInfo.earnDeliveryPoints(event);
+        
 
         
 

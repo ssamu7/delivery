@@ -7,15 +7,16 @@ import lombok.Data;
 
 
 @Entity
-@Table(name="MyPage_table")
+@Table(name="Menu_table")
 @Data
-public class MyPage {
+public class Menu {
 
         @Id
         //@GeneratedValue(strategy=GenerationType.AUTO)
         private Long id;
-        private String status;
-        private Integer point;
+        private String foodId;
+        private String storeId;
+        private String options;
 
 
 }

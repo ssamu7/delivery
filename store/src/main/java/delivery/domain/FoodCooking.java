@@ -2,7 +2,6 @@ package delivery.domain;
 
 import delivery.domain.OrderAccepted;
 import delivery.domain.OrderRejected;
-import delivery.domain.CookStarted;
 import delivery.domain.CookFinished;
 import delivery.StoreApplication;
 import javax.persistence.*;
@@ -78,11 +77,6 @@ public class FoodCooking  {
 
 
 
-        CookStarted cookStarted = new CookStarted(this);
-        cookStarted.publishAfterCommit();
-
-
-
         CookFinished cookFinished = new CookFinished(this);
         cookFinished.publishAfterCommit();
 
@@ -98,6 +92,9 @@ public class FoodCooking  {
     public void accept(AcceptCommand acceptCommand){
     }
     public void start(){
+        CookStarted cookStarted = new CookStarted(this);
+        cookStarted.publishAfterCommit();
+
     }
 
     public static void copyOrderInfo(OrderPlaced orderPlaced){

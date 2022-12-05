@@ -2,15 +2,18 @@
 
     <v-card outlined>
         <v-card-title>
-            MyPage # {{$route.params.id }}
+            Menu # {{$route.params.id }}
         </v-card-title>
 
         <v-card-text>
             <div>
-                <String label="Status" v-model="item.status" :editMode="editMode" @change="change" />
+                <String label="FoodId" v-model="item.foodId" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <Number label="Point" v-model="item.point" :editMode="editMode" @change="change" />
+                <String label="StoreId" v-model="item.storeId" :editMode="editMode" @change="change" />
+            </div>
+            <div>
+                <String label="Options" v-model="item.options" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
     </v-card>
@@ -21,7 +24,7 @@
   const axios = require('axios').default;
 
   export default {
-    name: 'MyPageViewDetail',
+    name: 'MenuViewDetail',
     props: {
       value: Object,
     },
@@ -30,7 +33,7 @@
     }),
     async created() {
       var params = this.$route.params;
-      var temp = await axios.get(axios.fixUrl('/myPages/' + params.id))
+      var temp = await axios.get(axios.fixUrl('/menus/' + params.id))
 
       this.item = temp.data;
 

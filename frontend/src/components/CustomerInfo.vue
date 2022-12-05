@@ -10,16 +10,16 @@
         </template>
 
         <v-card-title v-if="value._links">
-            Delivery # {{value._links.self.href.split("/")[value._links.self.href.split("/").length - 1]}}
+            CustomerInfo # {{value._links.self.href.split("/")[value._links.self.href.split("/").length - 1]}}
         </v-card-title >
         <v-card-title v-else>
-            Delivery
+            CustomerInfo
         </v-card-title >
 
         <v-card-text>
-            <String label="Status" v-model="value.status" :editMode="editMode"/>
+            <String label="CustomerId" v-model="value.customerId" :editMode="editMode"/>
+            <Number label="Point" v-model="value.point" :editMode="editMode"/>
             <String label="OrderId" v-model="value.orderId" :editMode="editMode"/>
-            <String label="Address" v-model="value.address" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -38,9 +38,7 @@
                     @click="save"
                     v-else
             >
-                Pick
-                ConfirmDelivered
-                CustomerPick
+                Save
             </v-btn>
             <v-btn
                     color="deep-purple lighten-2"
@@ -83,7 +81,7 @@
 
 
     export default {
-        name: 'Delivery',
+        name: 'CustomerInfo',
         components:{
         },
         props: {
@@ -135,7 +133,7 @@
 
                     if(!this.offline) {
                         if(this.isNew) {
-                            temp = await axios.post(axios.fixUrl('/deliveries'), this.value)
+                            temp = await axios.post(axios.fixUrl('/customerInfos'), this.value)
                         } else {
                             temp = await axios.put(axios.fixUrl(this.value._links.self.href), this.value)
                         }
@@ -191,25 +189,6 @@
             },
             change(){
                 this.$emit('input', this.value);
-            },
-            async () {
-                try {
-                    if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href))
-                        for(var k in temp.data) {
-                            this.value[k]=temp.data[k];
-                        }
-                    }
-
-                    this.editMode = false;
-                } catch(e) {
-                    this.snackbar.status = true
-                    if(e.response && e.response.data.message) {
-                        this.snackbar.text = e.response.data.message
-                    } else {
-                        this.snackbar.text = e
-                    }
-                }
             },
         },
     }

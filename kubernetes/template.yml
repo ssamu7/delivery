@@ -83,22 +83,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rider
+  name: delivery
   labels:
-    app: rider
+    app: delivery
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rider
+      app: delivery
   template:
     metadata:
       labels:
-        app: rider
+        app: delivery
     spec:
       containers:
-        - name: rider
-          image: username/rider:latest
+        - name: delivery
+          image: username/delivery:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -199,15 +199,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rider
+  name: delivery
   labels:
-    app: rider
+    app: delivery
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: rider
+    app: delivery
 
 
 ---
