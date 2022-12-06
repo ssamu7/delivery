@@ -51,10 +51,10 @@ public class Order  {
     private String customerId;
     
     
-    
-    
-    
     private String storeId;
+
+
+    private Integer pickYn;
 
     @PostPersist
     public void onPostPersist(){

@@ -96,17 +96,32 @@ public class FoodCooking  {
 
 
     public void accept(AcceptCommand acceptCommand){
+        if(acceptCommand.getAccept()) {
+            OrderAccepted.orderAccepted = new OrderAccepted(this);
+            orderAccepted.publishAfterCommit();
+
+            setStatus("order accepted");
+        } else {
+            orderRejected orderRejected = new OrderRejected(this);
+            orderRejected.publishAfterCommit();
+
+            setStatus("order rejected");
+        }
     }
     public void start(){
     }
 
     public static void copyOrderInfo(OrderPlaced orderPlaced){
 
-        /** Example 1:  new item 
+        /** Example 1:  new item*/ 
         FoodCooking foodCooking = new FoodCooking();
+        foodCooking.setCustmerId(orderPlaced.getCustomerId());
+        foodCooking.setFoodId(orderPlaced.getFoodId());
+        foodCooking.setOrderId(String.valueOf(orderPlaced.getId()));
+        foodCooking.setStatus("payment processing");
         repository().save(foodCooking);
 
-        */
+        
 
         /** Example 2:  finding and process
         
@@ -129,16 +144,16 @@ public class FoodCooking  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process*/
         
-        repository().findById(paid.get???()).ifPresent(foodCooking->{
+        repository().findByOrderId(paid.getOrderId()).ifPresent(foodCooking->{
             
-            foodCooking // do something
+            foodCooking.setStatus("paid successfully"); // do something
             repository().save(foodCooking);
 
 
          });
-        */
+        
 
         
     }
