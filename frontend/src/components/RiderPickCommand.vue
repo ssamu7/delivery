@@ -2,7 +2,7 @@
 
     <v-card outlined>
         <v-card-title>
-            Pick
+            RiderPick
         </v-card-title>
 
         <v-card-text>
@@ -13,9 +13,9 @@
             <v-btn
                     color="deep-purple lighten-2"
                     text
-                    @click="pick"
+                    @click="riderPick"
             >
-                Pick
+                RiderPick
             </v-btn>
             
             <v-btn
@@ -33,7 +33,7 @@
 <script>
    
     export default {
-        name: 'PickCommand',
+        name: 'RiderPickCommand',
         components:{},
         props: {},
         data: () => ({
@@ -45,8 +45,8 @@
         watch: {
         },
         methods: {
-            pick() {
-                this.$emit('pick', this.value);
+            riderPick() {
+                this.$emit('riderPick', this.value);
             },
             close() {
                 this.$emit('closeDialog');
